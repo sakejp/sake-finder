@@ -45,14 +45,13 @@ document.querySelectorAll(".choice").forEach(btn => {
 // 次の質問へ
 // ===============================
 function goNext() {
-  // 現在の質問を非表示
   questionEls[currentIndex].style.display = "none";
   currentIndex++;
 
-  // 次があれば表示
   if (currentIndex < questionEls.length) {
     questionEls[currentIndex].style.display = "block";
   } else {
-    alert("診断完了（ここで結果表示に進めます）");
+    // ✅ 全問回答後に診断結果を表示
+    onMatch();
   }
 }
