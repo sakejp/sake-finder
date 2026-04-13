@@ -3,37 +3,33 @@
 // ===============================
 const QUESTIONS = ["fruity", "acidity", "dryness", "aroma", "body"];
 
-const LABELS = {
-  fruity: ["フルーティーが好き", "控えめが好き"],
-  acidity: ["酸味が好き", "酸味は苦手"],
-  dryness: ["辛口が好き", "甘口が好き"],
-  aroma: ["華やかな香り", "穏やかな香り"],
-  body: ["コク旨", "軽快スッキリ"],
-};
-
 // ===============================
 // 状態
 // ===============================
-let answers = {};        // { fruity:0/1 ... }
-let station = "";        // "東京駅" など
-let SAKE_LIST = [];      // sakes.json
-let STORES = {};         // { "東京駅": [ {name, note, walk} ] }
-let INVENTORY = {};      // { "店舗名": ["銘柄", ...] }
+let answers = {};
+let station = "";
+let SAKE_LIST = [];
+let STORES = {};
+let INVENTORY = {};
+let currentIndex = 0;
+let questionEls = [];
 
 // ===============================
 // 初期化
 // ===============================
 document.addEventListener("DOMContentLoaded", async () => {
-  // 回答選択
+  // 質問要素
+  questionEls = Array.from(document.querySelectorAll(".q"));
+  showQuestion(0);
+
+  // クリック回答（YES/NO）
   document.querySelectorAll(".q .choice").forEach(btn => {
     btn.addEventListener("click", e => {
       const wrap = e.target.closest(".q");
-      wrap.querySelectorAll(".choice").forEach(b => b.classList.remove("selected"));
-      e.target.classList.add("selected");
-
       const key = wrap.dataset.key;
       const val = Number(e.target.dataset.score);
       answers[key] = val;
+      goNext(val === 1 ? "right" : "left");
     });
   });
 
@@ -55,22 +51,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   SAKE_LIST = sakes;
 
-  // -------------------------------
-  // stores.json → STORES 変換
-  // -------------------------------
+  // stores.json → 駅別マップ
   storesRaw.forEach(s => {
     const key = s.station + "駅";
     if (!STORES[key]) STORES[key] = [];
     STORES[key].push({
       name: s.name,
       note: s.location,
-      walk: 5, // 仮で5分
+      walk: 5,
     });
   });
 
-  // -------------------------------
-  // inventory.json → INVENTORY 変換
-  // -------------------------------
+  // inventory.json → 店舗名マップ
   inventoryRaw.stations.forEach(st => {
     st.stores.forEach(store => {
       INVENTORY[store.name] = store.inventory;
@@ -79,18 +71,64 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 // ===============================
+// スワイプUI制御
+// ===============================
+function showQuestion(index) {
+  questionEls.forEach((q, i) => {
+    q.classList.remove("active", "out-left", "out-right");
+    if (i === index) q.classList.add("active");
+  });
+}
+
+function goNext(direction) {
+  const current = questionEls[currentIndex];
+  current.classList.add(direction === "right" ? "out-right" : "out-left");
+
+  currentIndex++;
+  if (currentIndex < questionEls.length) {
+    setTimeout(() => showQuestion(currentIndex), 200);
+  } else {
+    document.getElementById("matchBtn").click();
+  }
+}
+
+// ===============================
+// タッチ（スワイプ）対応
+// ===============================
+let startX = 0;
+
+document.addEventListener("touchstart", e => {
+  if (!questionEls[currentIndex]) return;
+  startX = e.touches[0].clientX;
+});
+
+document.addEventListener("touchend", e => {
+  if (!questionEls[currentIndex]) return;
+  const endX = e.changedTouches[0].clientX;
+  const diff = endX - startX;
+
+  if (Math.abs(diff) > 50) {
+    const key = questionEls[currentIndex].dataset.key;
+    const val = diff > 0 ? 1 : 0;
+    answers[key] = val;
+    goNext(diff > 0 ? "right" : "left");
+  }
+});
+
+// ===============================
 // リセット
 // ===============================
 function resetSelections() {
   answers = {};
-  document.querySelectorAll(".q .choice").forEach(b => b.classList.remove("selected"));
+  currentIndex = 0;
+  showQuestion(0);
   document.getElementById("recommendations").innerHTML = "";
   document.getElementById("storeResults").innerHTML = "";
   document.getElementById("resultSummary").textContent = "";
 }
 
 // ===============================
-// 診断処理
+// 診断ロジック
 // ===============================
 function onMatch() {
   if (!station) {
@@ -98,38 +136,23 @@ function onMatch() {
     return;
   }
 
-  for (const k of QUESTIONS) {
-    if (!(k in answers)) {
-      alert("5問すべて回答してください");
-      return;
-    }
-  }
-
-  // スコアリング
   const ranked = SAKE_LIST.map(s => {
     let score = 0;
     const weight = { fruity:1, acidity:0.9, dryness:1.2, aroma:1.1, body:0.8 };
 
-    for (const k of QUESTIONS) {
+    QUESTIONS.forEach(k => {
       const a = answers[k];
       const b = Number(s.profile[k] ?? 0.5);
       score += (1 - Math.abs(a - b)) * weight[k];
-    }
+    });
 
     return { ...s, score: +(score / QUESTIONS.length).toFixed(4) };
-  }).sort((a,b) => b.score - a.score);
+  }).sort((a, b) => b.score - a.score);
 
   const top = ranked.slice(0, 3);
+  document.getElementById("resultSummary").textContent = `選択した駅：${station}`;
+  document.getElementById("recommendations").innerHTML = top.map(renderSake).join("");
 
-  // 結果要約
-  document.getElementById("resultSummary").textContent =
-    `選択した駅：${station}`;
-
-  // 銘柄表示
-  document.getElementById("recommendations").innerHTML =
-    top.map(renderSake).join("");
-
-  // 店舗マッチング
   const storeWrap = document.getElementById("storeResults");
   const stores = STORES[station] || [];
   const blocks = [];
@@ -137,16 +160,13 @@ function onMatch() {
   stores.forEach(st => {
     const list = INVENTORY[st.name] || [];
     const hit = top.filter(s => list.includes(s.name));
-
     if (hit.length > 0) {
       blocks.push(`
         <div class="store">
-          <div>
-            <strong>${st.name}</strong>
-            <span class="badge">徒歩${st.walk}分</span>
-          </div>
+          <strong>${st.name}</strong>
+          <span class="badge">徒歩${st.walk}分</span>
           <div class="muted">${st.note}</div>
-          <div style="margin-top:6px">
+          <div>
             ${hit.map(h => `<span class="badge">買える見込み：${h.name}</span>`).join(" ")}
           </div>
         </div>
@@ -155,26 +175,25 @@ function onMatch() {
   });
 
   storeWrap.innerHTML =
-    blocks.length > 0
-      ? blocks.join("")
-      : `<div class="store"><strong>該当する購入店舗が見つかりませんでした</strong></div>`;
+    blocks.length ? blocks.join("") :
+    `<div class="store"><strong>該当するお店がありません</strong></div>`;
 }
 
 // ===============================
-// 表示用
+// 表示
 // ===============================
 function renderSake(s) {
   return `
     <div class="rec">
       <strong>${s.name}</strong>
       <div class="muted">${s.notes || ""}</div>
-      <div style="margin-top:6px">
+      <div>
         <span class="badge">${s.region}</span>
         <span class="badge">${s.profile.dryness >= 0.5 ? "辛口寄り" : "甘口寄り"}</span>
         <span class="badge">${s.profile.fruity >= 0.5 ? "フルーティー" : "穏やか"}</span>
       </div>
-      <div style="margin-top:6px">適温：${s.serve}</div>
-      <div style="margin-top:6px">一致度：${(s.score * 100).toFixed(1)}%</div>
+      <div>適温：${s.serve}</div>
+      <div>一致度：${(s.score * 100).toFixed(1)}%</div>
     </div>
   `;
 }
