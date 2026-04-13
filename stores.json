@@ -1,0 +1,98 @@
+[
+  {
+    "store_id": "shinyokohama_bicsakehan",
+    "station": "新横浜",
+    "name": "ビック酒販 新横浜店（ビックカメラ新横浜店 4F）",
+    "type": "酒販",
+    "location": "改札外／キュービックプラザ新横浜内",
+    "hours": ""
+  },
+  {
+    "store_id": "shinyokohama_seijoishii",
+    "station": "新横浜",
+    "name": "成城石井 新横浜プリンスペペ店",
+    "type": "スーパーマーケット（酒類取扱い）",
+    "location": "改札外／新横浜プリンスペペ1F",
+    "hours": ""
+  },
+  {
+    "store_id": "kyoto_isetan_wayoshu",
+    "station": "京都",
+    "name": "ジェイアール京都伊勢丹 地下1階 和洋酒コーナー",
+    "type": "百貨店・和洋酒売場",
+    "location": "駅直結／京都駅ビル内 B1F",
+    "hours": ""
+  },
+  {
+    "store_id": "shinosaka_entree_central",
+    "station": "新大阪",
+    "name": "アントレマルシェ 新大阪中央口店",
+    "type": "お土産・コンビニ（酒類あり）",
+    "location": "改札外／新幹線中央口前 3F",
+    "hours": ""
+  },
+  {
+    "store_id": "shinosaka_entree_ekimarche",
+    "station": "新大阪",
+    "name": "アントレマルシェ エキマルシェ新大阪店",
+    "type": "お土産・コンビニ（酒類あり）",
+    "location": "在来線改札内／エキマルシェ新大阪",
+    "hours": ""
+  },
+  {
+    "store_id": "shinosaka_omiyage_arde",
+    "station": "新大阪",
+    "name": "おみやげ街道 アルデ新大阪店",
+    "type": "お土産（酒類あり）",
+    "location": "改札外／アルデ新大阪 2F",
+    "hours": ""
+  },
+  {
+    "store_id": "tokyo_daimaru_wayoshu",
+    "station": "東京",
+    "name": "大丸東京店 和洋酒売場",
+    "type": "百貨店・和洋酒売場",
+    "location": "改札外／大丸東京店 B1F",
+    "hours": "10:00-20:00"
+  },
+  {
+    "store_id": "tokyo_hasegawa_gransta",
+    "station": "東京",
+    "name": "はせがわ酒店 グランスタ東京店",
+    "type": "日本酒バー・酒販",
+    "location": "改札内／グランスタ東京 B1F スクエアゼロエリア",
+    "hours": "月～土 7:00-22:00／日・祝 7:00-21:00"
+  },
+  {
+    "store_id": "tokyo_liquors_hasegawa_kita",
+    "station": "東京",
+    "name": "リカーズハセガワ 北口店",
+    "type": "酒販",
+    "location": "改札外／東京駅 八重洲地下街 北1号（外堀地下2番通り）",
+    "hours": "10:00-20:00"
+  },
+  {
+    "store_id": "shinagawa_queens_isetan",
+    "station": "品川",
+    "name": "クイーンズ伊勢丹 品川店",
+    "type": "スーパーマーケット（酒類取扱い）",
+    "location": "改札外／アトレ品川 3F",
+    "hours": "10:00-22:00"
+  },
+  {
+    "store_id": "nagoya_takashimaya_washu",
+    "station": "名古屋",
+    "name": "ジェイアール名古屋タカシマヤ 和酒売場",
+    "type": "百貨店・和洋酒売場",
+    "location": "駅直結／ジェイアール名古屋タカシマヤ B2F",
+    "hours": "10:00-20:00"
+  },
+  {
+    "store_id": "nagoya_bicsakehan_gate",
+    "station": "名古屋",
+    "name": "ビック酒販 名古屋JRゲートタワー店",
+    "type": "酒販（量販店内）",
+    "location": "直結／JRゲートタワー 9F（ビックカメラ内）",
+    "hours": "10:00-21:00"
+  }
+]
