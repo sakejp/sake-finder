@@ -32,11 +32,12 @@ select{background:#1f2130;color:var(--text);border:1px solid #2b2d3a;padding:10p
 #quiz-section {
   position: relative;
   overflow: hidden;
+  min-height: 220px;
 }
 
 .q {
   position: absolute;
-  top: 0;
+  top: 64px;
   left: 0;
   width: 100%;
   opacity: 0;
