@@ -1,5 +1,3 @@
-console.log("APP WITH STORE MATCHING LOADED");
-
 // ===============================
 // 定数
 // ===============================
@@ -90,6 +88,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 // 診断結果表示
 // ===============================
 function showResult() {
+  if (!station) {
+  alert("乗車駅を選択してください");
+  return;
+}
   const summary = document.getElementById("resultSummary");
   const recWrap = document.getElementById("recommendations");
   const storeWrap = document.getElementById("storeResults");
