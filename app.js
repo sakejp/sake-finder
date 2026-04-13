@@ -20,15 +20,24 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 選択肢クリック
-  document.querySelectorAll(".choice").forEach(btn => {
-    btn.addEventListener("click", e => {
-      const q = e.target.closest(".q");
-      const key = q.dataset.key;
-      const val = Number(e.target.dataset.score);
-      answers[key] = val;
+document.querySelectorAll(".choice").forEach(btn => {
+  btn.addEventListener("click", e => {
+    const q = e.target.closest(".q");
+    const key = q.dataset.key;
+    const val = Number(e.target.dataset.score);
+    answers[key] = val;
 
+    // 退場アニメーション
+    q.style.transform = val === 1
+      ? "translateX(120%)"
+      : "translateX(-120%)";
+    q.style.opacity = "0";
+
+    setTimeout(() => {
+      q.style.transform = "";
+      q.style.opacity = "";
       goNext();
-    });
+    }, 260);
   });
 });
 
