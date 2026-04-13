@@ -4,102 +4,83 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>東海道新幹線 × 日本酒マッチング</title>
-
-  <link rel="stylesheet" href="styles.css
+  <link rel="stylesheet" href="styles.css">
 </head>
-    
+
 <body>
 <header>
   <h1>東海道新幹線 × 日本酒マッチング</h1>
-  <p class="sub">乗車駅を選んで、好みを2択×5問。あなたに合う銘柄と駅近店舗を提案します。</p>
+  <p class="sub">5問答えるだけで、あなたに合う日本酒タイプがわかります。</p>
 </header>
 
 <main>
-  <!-- 駅選択 -->
-  <section id="station-section" class="card">
-    <h2>① 乗車駅を選ぶ</h2>
-    <select id="stationSelect" aria-label="乗車駅">
-      <option value="" disabled selected>駅を選択</option>
-
-      <!-- 関東 -->
-      <option value="東京駅">東京駅</option>
-      <option value="品川駅">品川駅</option>
-      <option value="新横浜駅">新横浜駅</option>
-
-      <!-- 中部 -->
-      <option value="名古屋駅">名古屋駅</option>
-
-      <!-- 関西 -->
-      <option value="京都駅">京都駅</option>
-      <option value="新大阪駅">新大阪駅</option>
+  <section class="card">
+    <h2>① 乗車駅</h2>
+    <select id="stationSelect">
+      <option value="">駅を選択</option>
+      <option>東京駅</option>
+      <option>品川駅</option>
+      <option>新横浜駅</option>
+      <option>名古屋駅</option>
+      <option>京都駅</option>
+      <option>新大阪駅</option>
     </select>
-
   </section>
 
-  <!-- 診断UI（マッチングアプリ風） -->
   <section id="quiz-section" class="card">
-    <h2>② 好みを選ぶ（2択 × 5問）</h2>
+    <h2>② 好み診断</h2>
 
     <div class="q" data-key="fruity">
-      <p class="q-title">Q1. フルーティーな日本酒が好き？</p>
+      <p>Q1. フルーティーな日本酒が好き？</p>
       <div class="choice-row">
-        <button class="choice" data-score="1">好き</button>
-        <button class="choice" data-score="0">控えめが好き</button>
+        <button class="choice" data-score="1">はい</button>
+        <button class="choice" data-score="0">いいえ</button>
       </div>
     </div>
 
     <div class="q" data-key="acidity">
-      <p class="q-title">Q2. 酸味のある日本酒、どちらかといえば？</p>
+      <p>Q2. 酸味のある日本酒が好き？</p>
       <div class="choice-row">
-        <button class="choice" data-score="1">好き</button>
-        <button class="choice" data-score="0">苦手</button>
+        <button class="choice" data-score="1">はい</button>
+        <button class="choice" data-score="0">いいえ</button>
       </div>
     </div>
 
     <div class="q" data-key="dryness">
-      <p class="q-title">Q3. 辛口と甘口、どちらが好み？</p>
+      <p>Q3. 辛口が好き？</p>
       <div class="choice-row">
-        <button class="choice" data-score="1">辛口</button>
-        <button class="choice" data-score="0">甘口</button>
+        <button class="choice" data-score="1">はい</button>
+        <button class="choice" data-score="0">いいえ</button>
       </div>
     </div>
 
     <div class="q" data-key="aroma">
-      <p class="q-title">Q4. 香りのタイプは？</p>
+      <p>Q4. 香り重視？</p>
       <div class="choice-row">
-        <button class="choice" data-score="1">華やか（香り立つ）</button>
-        <button class="choice" data-score="0">穏やか（落ち着く）</button>
+        <button class="choice" data-score="1">はい</button>
+        <button class="choice" data-score="0">いいえ</button>
       </div>
     </div>
 
     <div class="q" data-key="body">
-      <p class="q-title">Q5. 飲み口のイメージは？</p>
+      <p>Q5. コクのある酒が好き？</p>
       <div class="choice-row">
-        <button class="choice" data-score="0">軽快・スッキリ</button>
-        <button class="choice" data-score="1">コク旨・リッチ</button>
+        <button class="choice" data-score="1">はい</button>
+        <button class="choice" data-score="0">いいえ</button>
       </div>
     </div>
-
-    <div class="actions">
-      <button id="resetBtn" class="ghost">選び直す</button>
-      <button id="matchBtn" class="primary">おすすめを診断する</button>
-    </div>
   </section>
 
-  <!-- 結果 -->
   <section id="result-section" class="card">
     <h2>③ 診断結果</h2>
-    <div id="resultSummary" class="muted"></div>
-    <div id="recommendations"></div>
-    <div id="storeResults"></div>
+    <div id="resultSummary"></div>
   </section>
-
 </main>
 
 <footer>
-  <small>© 2026 Sake Finder (for personal use)</small>
+  <small>© 2026 Sake Finder</small>
 </footer>
 
-  <script src="app.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
