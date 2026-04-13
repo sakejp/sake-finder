@@ -27,3 +27,36 @@ button.ghost{background:transparent;border:1px solid #2b2d3a;color:var(--text);p
 .muted{color:var(--muted)}
 footer{padding:20px 0 40px;text-align:center;color:var(--muted);font-size:.9rem}
 select{background:#1f2130;color:var(--text);border:1px solid #2b2d3a;padding:10px;border-radius:8px;min-width:240px}
+
+/* スワイプUI用 */
+#quiz-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.q {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transform: translateX(40px);
+  transition: all 0.35s ease;
+  pointer-events: none;
+}
+
+.q.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.q.out-left {
+  transform: translateX(-120%);
+  opacity: 0;
+}
+
+.q.out-right {
+  transform: translateX(120%);
+  opacity: 0;
+}
