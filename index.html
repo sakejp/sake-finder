@@ -1,37 +1,24 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>東海道新幹線 × 日本酒マッチング</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>日本酒マッチング</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 <header>
-  <h1>東海道新幹線 × 日本酒マッチング</h1>
-  <p class="sub">5問答えるだけで、あなたに合う日本酒タイプがわかります。</p>
+  <h1>日本酒マッチング</h1>
+  <p class="sub">5問であなたに合う日本酒を診断します</p>
 </header>
 
 <main>
-  <section class="card">
-    <h2>① 乗車駅</h2>
-    <select id="stationSelect">
-      <option value="">駅を選択</option>
-      <option>東京駅</option>
-      <option>品川駅</option>
-      <option>新横浜駅</option>
-      <option>名古屋駅</option>
-      <option>京都駅</option>
-      <option>新大阪駅</option>
-    </select>
-  </section>
-
   <section id="quiz-section" class="card">
-    <h2>② 好み診断</h2>
+    <h2>診断</h2>
 
     <div class="q" data-key="fruity">
-      <p>Q1. フルーティーな日本酒が好き？</p>
+      <p>Q1. フルーティーが好き？</p>
       <div class="choice-row">
         <button class="choice" data-score="1">はい</button>
         <button class="choice" data-score="0">いいえ</button>
@@ -39,7 +26,7 @@
     </div>
 
     <div class="q" data-key="acidity">
-      <p>Q2. 酸味のある日本酒が好き？</p>
+      <p>Q2. 酸味は好き？</p>
       <div class="choice-row">
         <button class="choice" data-score="1">はい</button>
         <button class="choice" data-score="0">いいえ</button>
@@ -63,7 +50,7 @@
     </div>
 
     <div class="q" data-key="body">
-      <p>Q5. コクのある酒が好き？</p>
+      <p>Q5. コクが欲しい？</p>
       <div class="choice-row">
         <button class="choice" data-score="1">はい</button>
         <button class="choice" data-score="0">いいえ</button>
@@ -72,15 +59,13 @@
   </section>
 
   <section id="result-section" class="card">
-    <h2>③ 診断結果</h2>
+    <h2>診断結果</h2>
     <div id="resultSummary"></div>
+    <div id="recommendations"></div>
   </section>
 </main>
-
-<footer>
-  <small>© 2026 Sake Finder</small>
-</footer>
 
 <script src="app.js"></script>
 </body>
 </html>
+``
