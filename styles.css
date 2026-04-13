@@ -62,54 +62,6 @@ h2{
 }
 
 /* =========================
-   スワイプUI（核心）
-   ========================= */
-
-#quiz-section{
-  position: relative;
-  overflow: hidden;
-  min-height: 260px;
-}
-
-/* 質問カード（デフォルトは非表示） */
-.q{
-  position: absolute;
-  top: 56px;
-  left: 0;
-  width: 100%;
-  padding: 14px;
-
-  background: var(--card);
-  border: 1px solid #232433;
-  border-radius: 12px;
-
-  display: none;
-  z-index: 0;
-
-  transition: transform .35s ease, opacity .35s ease;
-}
-
-/* 表示中カード */
-.q.active{
-  display: block;
-  z-index: 2;
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* 左へ退場 */
-.q.out-left{
-  transform: translateX(-130%);
-  opacity: 0;
-}
-
-/* 右へ退場 */
-.q.out-right{
-  transform: translateX(130%);
-  opacity: 0;
-}
-
-/* =========================
    選択肢
    ========================= */
 
