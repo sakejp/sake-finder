@@ -187,3 +187,20 @@ select{
   border-radius:8px;
   min-width:240px;
 }
+
+/* ========= スワイプ演出（安全版） ========= */
+
+.q {
+  animation: fadeInSlide .3s ease;
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
