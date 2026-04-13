@@ -84,10 +84,14 @@ function showQuestion(index) {
 function goNext(direction) {
   const current = questionEls[currentIndex];
   current.classList.add(direction === "right" ? "out-right" : "out-left");
+  current.classList.remove("active");
 
   currentIndex++;
+
   if (currentIndex < questionEls.length) {
-    setTimeout(() => showQuestion(currentIndex), 200);
+    setTimeout(() => {
+      showQuestion(currentIndex);
+    }, 200);
   } else {
     document.getElementById("matchBtn").click();
   }
