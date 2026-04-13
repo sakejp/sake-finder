@@ -145,3 +145,36 @@ function onMatch() {
             <strong>${st.name}</strong>
             <span class="badge">徒歩${st.walk}分</span>
           </div>
+          <div class="muted">${st.note}</div>
+          <div style="margin-top:6px">
+            ${hit.map(h => `<span class="badge">買える見込み：${h.name}</span>`).join(" ")}
+          </div>
+        </div>
+      `);
+    }
+  });
+
+  storeWrap.innerHTML =
+    blocks.length > 0
+      ? blocks.join("")
+      : `<div class="store"><strong>該当する購入店舗が見つかりませんでした</strong></div>`;
+}
+
+// ===============================
+// 表示用
+// ===============================
+function renderSake(s) {
+  return `
+    <div class="rec">
+      <strong>${s.name}</strong>
+      <div class="muted">${s.notes || ""}</div>
+      <div style="margin-top:6px">
+        <span class="badge">${s.region}</span>
+        <span class="badge">${s.profile.dryness >= 0.5 ? "辛口寄り" : "甘口寄り"}</span>
+        <span class="badge">${s.profile.fruity >= 0.5 ? "フルーティー" : "穏やか"}</span>
+      </div>
+      <div style="margin-top:6px">適温：${s.serve}</div>
+      <div style="margin-top:6px">一致度：${(s.score * 100).toFixed(1)}%</div>
+    </div>
+  `;
+}
