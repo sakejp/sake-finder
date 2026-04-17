@@ -66,3 +66,27 @@ function showResult(){
   document.getElementById("result-section")
     .scrollIntoView({behavior:"smooth"});
 }
+
+document.getElementById("restartBtn")?.addEventListener("click", () => {
+  // 状態初期化
+  answers = {};
+  index = 0;
+
+  // 質問を非表示 → 最初だけ表示
+  qs.forEach(q => q.style.display = "none");
+  qs[0].style.display = "block";
+
+  // 進捗リセット
+  updateProgress(0);
+
+  // 結果クリア
+  resultSummary.textContent = "";
+  recommendations.innerHTML = "";
+  storeResults.innerHTML = "";
+
+  // 駅選択は保持 or リセット（好みで）
+  // stationSelect.value = "";
+
+  // 先頭へ
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
