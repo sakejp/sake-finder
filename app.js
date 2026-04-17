@@ -55,28 +55,27 @@ function showResult(){
   storeResults.innerHTML=(STORES[station]||[]).map(st=>{
     const hit=(INVENTORY[st.name]||[])
       .filter(n=>ranked.some(r=>r.name===n));
-    return hit.length?`
-     <div class="store">
-  <div class="store-header">
-    <strong>${st.name}</strong>
-    <a 
-      href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(st.name)}"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="map-link"
-    >
-      Google Maps
-    </a>
-  </div>
+  return hit.length ? `
+  <div class="store">
+    <div class="store-header">
+      <strong>${st.name}</strong>
+      <a
+        href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(st.name)}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="map-link"
+      >
+        Google Maps
+      </a>
+    </div>
 
-  <div class="muted">${st.location}</div>
+    <div class="muted">${st.location}</div>
 
-  <div style="margin-top:6px">
-    ${hit.map(h =>
-      `<span class="badge">買える見込み：${h.name}</span>`
-    ).join(" ")}
+    <div style="margin-top:6px">
+      ${hit.map(h=>`<span class="badge">${h}</span>`).join("")}
+    </div>
   </div>
-</div>`:"";
+` : "";
   }).join("");
 
   document.getElementById("result-section")
