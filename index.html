@@ -4,8 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>東海道新幹線 × 日本酒マッチング</title>
-
-  <!-- CSS -->
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -21,12 +19,10 @@
 
 <main>
 
-  <!-- =====================
-       ① 駅選択（必須）
-       ===================== -->
+  <!-- ① 駅選択 -->
   <section id="station-section" class="card">
     <h2>① 乗車駅を選ぶ</h2>
-    <select id="stationSelect" aria-label="乗車駅">
+    <select id="stationSelect">
       <option value="">駅を選択</option>
       <option value="東京駅">東京駅</option>
       <option value="品川駅">品川駅</option>
@@ -37,22 +33,34 @@
     </select>
   </section>
 
-  <!-- =====================
-       ② 診断（1問ずつ）
-       ===================== -->
+  <!-- ② 診断 -->
   <section id="quiz-section" class="card">
-    <h2>② 好み診断（2択 × 5問）</h2>
+    <h2>② 好み診断</h2>
 
+    <!-- 進捗 -->
+    <div id="progress">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
+    <!-- 各質問 -->
     <div class="q" data-key="fruity">
-      <p class="q-title">Q1. フルーティーな日本酒が好き？</p>
+      <div class="swipe-label like">LIKE</div>
+      <div class="swipe-label nope">NOPE</div>
+      <p>Q1. フルーティーな日本酒が好き？</p>
       <div class="choice-row">
         <button class="choice" data-score="1">好き</button>
-        <button class="choice" data-score="0">控えめが好き</button>
+        <button class="choice" data-score="0">控えめ</button>
       </div>
     </div>
 
     <div class="q" data-key="acidity">
-      <p class="q-title">Q2. 酸味のある日本酒は？</p>
+      <div class="swipe-label like">LIKE</div>
+      <div class="swipe-label nope">NOPE</div>
+      <p>Q2. 酸味のある日本酒は？</p>
       <div class="choice-row">
         <button class="choice" data-score="1">好き</button>
         <button class="choice" data-score="0">苦手</button>
@@ -60,7 +68,9 @@
     </div>
 
     <div class="q" data-key="dryness">
-      <p class="q-title">Q3. 辛口と甘口、どちらが好み？</p>
+      <div class="swipe-label like">LIKE</div>
+      <div class="swipe-label nope">NOPE</div>
+      <p>Q3. 辛口と甘口、どちらが好み？</p>
       <div class="choice-row">
         <button class="choice" data-score="1">辛口</button>
         <button class="choice" data-score="0">甘口</button>
@@ -68,7 +78,9 @@
     </div>
 
     <div class="q" data-key="aroma">
-      <p class="q-title">Q4. 香りのタイプは？</p>
+      <div class="swipe-label like">LIKE</div>
+      <div class="swipe-label nope">NOPE</div>
+      <p>Q4. 香りのタイプは？</p>
       <div class="choice-row">
         <button class="choice" data-score="1">華やか</button>
         <button class="choice" data-score="0">穏やか</button>
@@ -76,38 +88,31 @@
     </div>
 
     <div class="q" data-key="body">
-      <p class="q-title">Q5. 飲み口のイメージは？</p>
+      <div class="swipe-label like">LIKE</div>
+      <div class="swipe-label nope">NOPE</div>
+      <p>Q5. 飲み口のイメージは？</p>
       <div class="choice-row">
-        <button class="choice" data-score="1">コク旨</button>
+        <button class="choice" data-score="1">コク</button>
         <button class="choice" data-score="0">軽快</button>
       </div>
     </div>
   </section>
 
-  <!-- =====================
-       ③ 診断結果
-       ===================== -->
+  <!-- ③ 結果 -->
   <section id="result-section" class="card">
     <h2>③ 診断結果</h2>
-
-    <!-- 診断サマリー -->
     <div id="resultSummary" class="muted"></div>
-
-    <!-- おすすめ日本酒 -->
     <div id="recommendations"></div>
-
-    <!-- 駅近店舗 -->
     <div id="storeResults"></div>
   </section>
 
 </main>
 
 <footer>
-  <small>© 2026 Sake Finder (for personal use)</small>
+  <small>© 2026 Sake Finder</small>
 </footer>
 
-<!-- JavaScript -->
 <script src="app.js"></script>
-
 </body>
 </html>
+``
