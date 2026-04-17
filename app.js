@@ -1,107 +1,143 @@
-const QUESTIONS=["fruity","acidity","dryness","aroma","body"];
-let answers={},index=0,qs=[];
-let SAKE_LIST=[],STORES={},INVENTORY={},station="";
+const QUESTIONS = ["fruity","acidity","dryness","aroma","body"];
 
-document.addEventListener("DOMContentLoaded",async()=>{
-  qs=[...document.querySelectorAll(".q")];
-  qs[0].style.display="block";
+let answers = {};
+let index = 0;
+let qs = [];
+let SAKE_LIST = [];
+let STORES = {};
+let INVENTORY = {};
+let station = "";
 
+document.addEventListener("DOMContentLoaded", async () => {
+  // 質問
+  qs = Array.from(document.querySelectorAll(".q"));
+  qs.forEach((q,i)=>q.style.display = i===0 ? "block" : "none");
+
+  // 駅選択
   document.getElementById("stationSelect")
-    .addEventListener("change",e=>station=e.target.value);
+    .addEventListener("change", e => station = e.target.value);
 
-  SAKE_LIST=await fetch("data/sakes.json").then(r=>r.json());
-  const s=await fetch("data/stores.json").then(r=>r.json());
-  const i=await fetch("data/inventory.json").then(r=>r.json());
+  // 日本酒
+  SAKE_LIST = await fetch("data/sakes.json").then(r=>r.json());
 
-  s.forEach(x=>{
-    const k=x.station+"駅";
-    (STORES[k]??=[]).push({name:x.name,location:x.location});
+  // 店舗
+  const storesRaw = await fetch("data/stores.json").then(r=>r.json());
+  const inventoryRaw = await fetch("data/inventory.json").then(r=>r.json());
+
+  storesRaw.forEach(s=>{
+    const k = s.station + "駅";
+    if(!STORES[k]) STORES[k] = [];
+    STORES[k].push({
+      name: s.name,
+      location: s.location
+    });
   });
-  i.stations.forEach(st=>st.stores.forEach(o=>INVENTORY[o.name]=o.inventory));
 
-  document.querySelectorAll(".choice").forEach(b=>{
-    b.onclick=e=>{
-      const q=e.target.closest(".q");
-      answers[q.dataset.key]=Number(b.dataset.score);
-      q.style.display="none";
+  inventoryRaw.stations.forEach(st=>{
+    st.stores.forEach(store=>{
+      INVENTORY[store.name] = store.inventory;
+    });
+  });
+
+  // 回答
+  document.querySelectorAll(".choice").forEach(btn=>{
+    btn.addEventListener("click", e=>{
+      const q = e.target.closest(".q");
+      answers[q.dataset.key] = Number(btn.dataset.score);
+
+      q.style.display = "none";
       index++;
       updateProgress(index);
-      index<qs.length?qs[index].style.display="block":showResult();
-    };
+
+      if(index < qs.length){
+        qs[index].style.display = "block";
+      } else {
+        showResult();
+      }
+    });
   });
+
+  // リスタート
+  document.getElementById("restartBtn")
+    .addEventListener("click", resetAll);
 });
 
 function updateProgress(i){
   document.querySelectorAll(".dot")
-    .forEach((d,idx)=>d.classList.toggle("active",idx<=i));
+    .forEach((d,idx)=>d.classList.toggle("active", idx<=i));
 }
 
 function showResult(){
-  const ranked=SAKE_LIST.map(s=>{
-    let sc=0;
-    QUESTIONS.forEach(k=>sc+=1-Math.abs(answers[k]-(s.profile[k]??.5)));
-    return {...s,score:sc};
+  const ranked = SAKE_LIST.map(s=>{
+    let score = 0;
+    QUESTIONS.forEach(k=>{
+      score += 1 - Math.abs(answers[k] - (s.profile[k] ?? 0.5));
+    });
+    return {...s, score};
   }).sort((a,b)=>b.score-a.score).slice(0,3);
 
-  resultSummary.textContent="あなたに合う日本酒はこちらです";
+  // 日本酒表示
+  resultSummary.textContent = "あなたに合う日本酒はこちらです。";
 
-  recommendations.innerHTML=ranked.map(s=>`
+  recommendations.innerHTML = ranked.map(s=>`
     <div class="rec">
       <strong>${s.name}</strong>
       <div class="muted">${s.region}</div>
-      <div>${Math.round(s.score/5*100)}%</div>
-    </div>`).join("");
-
-  storeResults.innerHTML=(STORES[station]||[]).map(st=>{
-    const hit=(INVENTORY[st.name]||[])
-      .filter(n=>ranked.some(r=>r.name===n));
-  return hit.length ? `
-  <div class="store">
-    <div class="store-header">
-      <strong>${st.name}</strong>
-      <a
-        href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(st.name)}"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="map-link"
-      >
-        Google Maps
-      </a>
+      <div>一致度：${Math.round(s.score/QUESTIONS.length*100)}%</div>
     </div>
+  `).join("");
 
-    <div class="muted">${st.location}</div>
+  // 店舗表示
+  const stores = STORES[station] || [];
+  const blocks = [];
 
-    <div style="margin-top:6px">
-      ${hit.map(h=>`<span class="badge">${h}</span>`).join("")}
-    </div>
-  </div>
-` : "";
-  }).join("");
+  stores.forEach(st=>{
+    const inventory = INVENTORY[st.name] || [];
+    const hit = ranked.filter(r => inventory.includes(r.name));
+
+    if(hit.length > 0){
+      blocks.push(`
+        <div class="store">
+          <div class="store-header">
+            <strong>${st.name}</strong>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(st.name)}"
+              target="_blank"
+              rel="noopener"
+              class="map-link"
+            >Google Maps</a>
+          </div>
+
+          <div class="muted">${st.location}</div>
+
+          <div style="margin-top:6px">
+            ${hit.map(h=>`<span class="badge">${h.name}</span>`).join("")}
+          </div>
+        </div>
+      `);
+    }
+  });
+
+  storeResults.innerHTML =
+    blocks.length > 0
+      ? blocks.join("")
+      : "<div class='store'>近くで購入できる店舗が見つかりませんでした</div>";
 
   document.getElementById("result-section")
     .scrollIntoView({behavior:"smooth"});
 }
 
-document.getElementById("restartBtn")?.addEventListener("click", () => {
-  // 状態初期化
+function resetAll(){
   answers = {};
   index = 0;
 
-  // 質問を非表示 → 最初だけ表示
-  qs.forEach(q => q.style.display = "none");
-  qs[0].style.display = "block";
+  qs.forEach(q=>q.style.display="none");
+  qs[0].style.display="block";
 
-  // 進捗リセット
   updateProgress(0);
+  resultSummary.textContent="";
+  recommendations.innerHTML="";
+  storeResults.innerHTML="";
 
-  // 結果クリア
-  resultSummary.textContent = "";
-  recommendations.innerHTML = "";
-  storeResults.innerHTML = "";
-
-  // 駅選択は保持 or リセット（好みで）
-  // stationSelect.value = "";
-
-  // 先頭へ
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
+  window.scrollTo({top:0,behavior:"smooth"});
+}
