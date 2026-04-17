@@ -48,17 +48,6 @@ main{max-width:800px;margin:auto;padding:16px}
 
 .q{display:none;position:relative}
 
-.swipe-label{
-  position:absolute;
-  top:8px;
-  font-size:2.2rem;
-  font-weight:800;
-  opacity:.08;
-  pointer-events:none;
-}
-.like{right:12px;color:var(--yes)}
-.nope{left:12px;color:var(--no)}
-
 .choice-row{display:flex;gap:12px;margin-top:12px}
 
 .choice{
