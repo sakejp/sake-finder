@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // 日本酒
   SAKE_LIST = await fetch("data/sakes.json").then(r=>r.json());
 
-  // 店舗
+  // 店舗・在庫
   const storesRaw = await fetch("data/stores.json").then(r=>r.json());
   const inventoryRaw = await fetch("data/inventory.json").then(r=>r.json());
 
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   inventoryRaw.stations.forEach(st=>{
     st.stores.forEach(store=>{
-      INVENTORY[store.name] = store.inventory;
+      INVENTORY[store.name] = store.inventory; // ← 配列（文字列）
     });
   });
 
@@ -49,15 +49,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       index++;
       updateProgress(index);
 
-      if(index < qs.length){
-        qs[index].style.display = "block";
-      } else {
-        showResult();
-      }
+      index < qs.length ? qs[index].style.display="block" : showResult();
     });
   });
 
-  // リスタート
   document.getElementById("restartBtn")
     .addEventListener("click", resetAll);
 });
@@ -68,6 +63,7 @@ function updateProgress(i){
 }
 
 function showResult(){
+  // 日本酒スコアリング
   const ranked = SAKE_LIST.map(s=>{
     let score = 0;
     QUESTIONS.forEach(k=>{
@@ -76,7 +72,6 @@ function showResult(){
     return {...s, score};
   }).sort((a,b)=>b.score-a.score).slice(0,3);
 
-  // 日本酒表示
   resultSummary.textContent = "あなたに合う日本酒はこちらです。";
 
   recommendations.innerHTML = ranked.map(s=>`
@@ -93,25 +88,23 @@ function showResult(){
 
   stores.forEach(st=>{
     const inventory = INVENTORY[st.name] || [];
+
+    // ✅ 常に ranked（オブジェクト）から name を取る
     const hit = ranked.filter(r => inventory.includes(r.name));
 
-    if(hit.length > 0){
+    if(hit.length){
       blocks.push(`
         <div class="store">
           <div class="store-header">
             <strong>${st.name}</strong>
-            <a
-              href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(st.name)}"
-              target="_blank"
-              rel="noopener"
-              class="map-link"
-            >Google Maps</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(st.name)}"
+               target="_blank" class="map-link">Google Maps</a>
           </div>
 
           <div class="muted">${st.location}</div>
 
           <div style="margin-top:6px">
-            ${hit.map(h=>`<span class="badge">${h.name}</span>`).join("")}
+            ${hit.map(r => `<span class="badge">買える見込み：${r.name}</span>`).join("")}
           </div>
         </div>
       `);
@@ -119,7 +112,7 @@ function showResult(){
   });
 
   storeResults.innerHTML =
-    blocks.length > 0
+    blocks.length
       ? blocks.join("")
       : "<div class='store'>近くで購入できる店舗が見つかりませんでした</div>";
 
@@ -130,14 +123,11 @@ function showResult(){
 function resetAll(){
   answers = {};
   index = 0;
-
   qs.forEach(q=>q.style.display="none");
   qs[0].style.display="block";
-
   updateProgress(0);
   resultSummary.textContent="";
   recommendations.innerHTML="";
   storeResults.innerHTML="";
-
   window.scrollTo({top:0,behavior:"smooth"});
 }
