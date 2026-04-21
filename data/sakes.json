@@ -1,0 +1,652 @@
+[
+  {
+    "name": "獺祭 純米大吟醸 45",
+    "region": "山口",
+    "notes": "華やかな香りときれいな甘み。日本酒ビギナーにも定番の飲みやすさ。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 1,
+      "acidity": 0.5,
+      "dryness": 0.4,
+      "aroma": 1,
+      "body": 0.4
+    }
+  },
+  {
+    "name": "久保田 萬寿",
+    "region": "新潟",
+    "notes": "上質な吟醸香と上品な旨みのバランスに定評。",
+    "serve": "冷酒〜常温",
+    "profile": {
+      "fruity": 0.6,
+      "acidity": 0.5,
+      "dryness": 0.6,
+      "aroma": 0.7,
+      "body": 0.6
+    }
+  },
+  {
+    "name": "八海山 純米大吟醸",
+    "region": "新潟",
+    "notes": "きれいな味わいと端正なキレ。幅広い料理に合わせやすい。",
+    "serve": "冷酒〜常温",
+    "profile": {
+      "fruity": 0.6,
+      "acidity": 0.5,
+      "dryness": 0.6,
+      "aroma": 0.6,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "真澄 純米吟醸 辛口生一本",
+    "region": "長野",
+    "notes": "キリッとした辛口。冷やして刺身・和食に好相性。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.5,
+      "acidity": 0.6,
+      "dryness": 0.9,
+      "aroma": 0.5,
+      "body": 0.4
+    }
+  },
+  {
+    "name": "出羽桜 純米大吟醸 一路",
+    "region": "山形",
+    "notes": "華やかな吟醸香とバランスの良さで海外でも評価。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.7,
+      "acidity": 0.5,
+      "dryness": 0.5,
+      "aroma": 0.8,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "浦霞 純米酒",
+    "region": "宮城",
+    "notes": "落ち着いた香りと米の旨み。常備酒として安定感。",
+    "serve": "冷酒〜常温",
+    "profile": {
+      "fruity": 0.4,
+      "acidity": 0.5,
+      "dryness": 0.6,
+      "aroma": 0.4,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "黒龍 いっちょらい",
+    "region": "福井",
+    "notes": "すっきり端正な辛口寄り。食中酒として万能。",
+    "serve": "冷酒〜常温",
+    "profile": {
+      "fruity": 0.4,
+      "acidity": 0.4,
+      "dryness": 0.8,
+      "aroma": 0.4,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "梵 純米大吟醸",
+    "region": "福井",
+    "notes": "上品な香りと奥行き。贈答にも人気。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.7,
+      "acidity": 0.5,
+      "dryness": 0.5,
+      "aroma": 0.9,
+      "body": 0.6
+    }
+  },
+  {
+    "name": "加賀鳶 純米大吟醸 吉祥",
+    "region": "石川",
+    "notes": "石川の食文化に寄り添う端麗で品のある味わい。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.6,
+      "acidity": 0.5,
+      "dryness": 0.6,
+      "aroma": 0.7,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "南部美人 特別純米",
+    "region": "岩手",
+    "notes": "米の旨みを丁寧に引き出したバランス型。",
+    "serve": "冷酒〜常温",
+    "profile": {
+      "fruity": 0.5,
+      "acidity": 0.5,
+      "dryness": 0.6,
+      "aroma": 0.5,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "伯楽星 純米吟醸",
+    "region": "宮城",
+    "notes": "“究極の食中酒”。ミネラル感のある引き締まった味わい。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.6,
+      "acidity": 0.6,
+      "dryness": 0.7,
+      "aroma": 0.6,
+      "body": 0.4
+    }
+  },
+  {
+    "name": "田酒 特別純米",
+    "region": "青森",
+    "notes": "旨みとキレのバランスに優れ、温度帯で表情が変わる。",
+    "serve": "冷酒〜常温",
+    "profile": {
+      "fruity": 0.5,
+      "acidity": 0.5,
+      "dryness": 0.6,
+      "aroma": 0.5,
+      "body": 0.6
+    }
+  },
+  {
+    "name": "作 純米吟醸",
+    "region": "三重",
+    "notes": "香味の調和がよく、現代的な綺麗さで人気。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.6,
+      "acidity": 0.5,
+      "dryness": 0.5,
+      "aroma": 0.7,
+      "body": 0.6
+    }
+  },
+  {
+    "name": "紀土 純米吟醸",
+    "region": "和歌山",
+    "notes": "柔らかな果実感と後口の軽快さ。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.7,
+      "acidity": 0.5,
+      "dryness": 0.5,
+      "aroma": 0.7,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "風の森 807",
+    "region": "奈良",
+    "notes": "瑞々しい香りとガス感。モダンな食中タイプ。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.8,
+      "acidity": 0.6,
+      "dryness": 0.5,
+      "aroma": 0.8,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "楯野川 純米大吟醸 清流",
+    "region": "山形",
+    "notes": "全量純米大吟醸蔵の看板。軽やかでクリアな旨み。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.7,
+      "acidity": 0.5,
+      "dryness": 0.5,
+      "aroma": 0.8,
+      "body": 0.4
+    }
+  },
+  {
+    "name": "天美 純米吟醸",
+    "region": "山口",
+    "notes": "やさしい甘みと透明感。新進気鋭の山口酒。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.7,
+      "acidity": 0.5,
+      "dryness": 0.5,
+      "aroma": 0.8,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "東洋美人 一番纏",
+    "region": "山口",
+    "notes": "エレガントな香りときれいな口当たり。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.8,
+      "acidity": 0.5,
+      "dryness": 0.5,
+      "aroma": 0.9,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "仙禽 クラシック",
+    "region": "栃木",
+    "notes": "みずみずしい酸と果実味。ナチュラルな設計。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.8,
+      "acidity": 0.7,
+      "dryness": 0.4,
+      "aroma": 0.8,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "鳳凰美田 純米吟醸",
+    "region": "栃木",
+    "notes": "華やかな香りと旨みの調和。ギフトでも人気。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.7,
+      "acidity": 0.5,
+      "dryness": 0.5,
+      "aroma": 0.8,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "宮寒梅 純米吟醸",
+    "region": "宮城",
+    "notes": "やわらかな甘みと後口の透明感。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.6,
+      "acidity": 0.5,
+      "dryness": 0.5,
+      "aroma": 0.7,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "雪の茅舎 純米吟醸",
+    "region": "秋田",
+    "notes": "適度な香りと旨み。幅広い温度で楽しめる。",
+    "serve": "冷酒〜常温",
+    "profile": {
+      "fruity": 0.5,
+      "acidity": 0.5,
+      "dryness": 0.6,
+      "aroma": 0.5,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "一白水成 純米吟醸",
+    "region": "秋田",
+    "notes": "フレッシュでクリーン。食事を引き立てる。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.6,
+      "acidity": 0.5,
+      "dryness": 0.5,
+      "aroma": 0.6,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "豊盃 特別純米",
+    "region": "青森",
+    "notes": "米の芯を感じるふくらみとキレ。",
+    "serve": "冷酒〜常温",
+    "profile": {
+      "fruity": 0.5,
+      "acidity": 0.5,
+      "dryness": 0.6,
+      "aroma": 0.5,
+      "body": 0.6
+    }
+  },
+  {
+    "name": "川中島 幻舞 純米吟醸",
+    "region": "長野",
+    "notes": "華やかさと膨らみのバランスが良い。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.7,
+      "acidity": 0.5,
+      "dryness": 0.5,
+      "aroma": 0.8,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "大信州 純米吟醸",
+    "region": "長野",
+    "notes": "透明感ある旨みと余韻。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.6,
+      "acidity": 0.5,
+      "dryness": 0.6,
+      "aroma": 0.6,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "天狗舞 山廃純米",
+    "region": "石川",
+    "notes": "山廃らしいコクと酸の骨格。燗もおすすめ。",
+    "serve": "冷酒〜燗",
+    "profile": {
+      "fruity": 0.3,
+      "acidity": 0.6,
+      "dryness": 0.7,
+      "aroma": 0.4,
+      "body": 0.7
+    }
+  },
+  {
+    "name": "酔鯨 吟麗 純米吟醸",
+    "region": "高知",
+    "notes": "シャープでキレの良い食中辛口。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.5,
+      "acidity": 0.6,
+      "dryness": 0.7,
+      "aroma": 0.5,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "亀泉 純米吟醸 CEL-24",
+    "region": "高知",
+    "notes": "パイナップル様の華やかさで人気の甘ジューシー系。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 1.0,
+      "acidity": 0.6,
+      "dryness": 0.3,
+      "aroma": 1.0,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "磯自慢 吟醸",
+    "region": "静岡",
+    "notes": "海風を思わせるミネラル感と上質な吟醸香。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.6,
+      "acidity": 0.5,
+      "dryness": 0.6,
+      "aroma": 0.7,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "澤乃井 純米吟醸 東京蔵人",
+    "region": "東京",
+    "notes": "東京の老舗蔵。落ち着いた香りと綺麗な余韻。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.5,
+      "acidity": 0.5,
+      "dryness": 0.6,
+      "aroma": 0.6,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "福寿 純米吟醸",
+    "region": "兵庫",
+    "notes": "神戸の銘酒。澄んだ香味で食との相性良好。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.6,
+      "acidity": 0.5,
+      "dryness": 0.6,
+      "aroma": 0.6,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "七田 純米",
+    "region": "佐賀",
+    "notes": "米の旨さを引き出す設計。飲み飽きしない。",
+    "serve": "冷酒〜常温",
+    "profile": {
+      "fruity": 0.5,
+      "acidity": 0.5,
+      "dryness": 0.6,
+      "aroma": 0.5,
+      "body": 0.6
+    }
+  },
+  {
+    "name": "開運 純米",
+    "region": "静岡",
+    "notes": "旨みとキレのバランスが良い王道の食中酒。",
+    "serve": "冷酒〜常温",
+    "profile": {
+      "fruity": 0.5,
+      "acidity": 0.5,
+      "dryness": 0.7,
+      "aroma": 0.5,
+      "body": 0.6
+    }
+  },
+  {
+    "name": "出雲富士 純米",
+    "region": "島根",
+    "notes": "米の滋味と清らかな後口。和食全般に。",
+    "serve": "冷酒〜常温",
+    "profile": {
+      "fruity": 0.5,
+      "acidity": 0.5,
+      "dryness": 0.6,
+      "aroma": 0.5,
+      "body": 0.6
+    }
+  },
+  {
+    "name": "旦 純米大吟醸",
+    "region": "山梨",
+    "notes": "ふくらみと品の良い香り。食卓を格上げする一本。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.7,
+      "acidity": 0.5,
+      "dryness": 0.5,
+      "aroma": 0.8,
+      "body": 0.6
+    }
+  },
+  {
+    "name": "甲子 純米吟醸",
+    "region": "千葉",
+    "notes": "果実香と軽快さで近年人気上昇。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.6,
+      "acidity": 0.5,
+      "dryness": 0.5,
+      "aroma": 0.7,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "総乃寒菊 純米大吟醸",
+    "region": "千葉",
+    "notes": "華やかでジューシーな現代的スタイル。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.9,
+      "acidity": 0.5,
+      "dryness": 0.4,
+      "aroma": 0.9,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "荷札酒 純米大吟醸",
+    "region": "新潟",
+    "notes": "洗練された香味設計で人気の新世代新潟酒。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.8,
+      "acidity": 0.5,
+      "dryness": 0.4,
+      "aroma": 0.9,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "あべ 純米吟醸",
+    "region": "新潟",
+    "notes": "フルーティーでモダン。限定流通も比較的見つけやすい。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.8,
+      "acidity": 0.5,
+      "dryness": 0.4,
+      "aroma": 0.9,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "上喜元 純米吟醸",
+    "region": "山形",
+    "notes": "食に寄り添う上品な吟醸香と旨み。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.6,
+      "acidity": 0.5,
+      "dryness": 0.6,
+      "aroma": 0.7,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "東一 純米吟醸",
+    "region": "佐賀",
+    "notes": "ふくらみある旨みとキレの良さで定評。",
+    "serve": "冷酒〜常温",
+    "profile": {
+      "fruity": 0.6,
+      "acidity": 0.5,
+      "dryness": 0.5,
+      "aroma": 0.7,
+      "body": 0.6
+    }
+  },
+  {
+    "name": "日高見 純米",
+    "region": "宮城",
+    "notes": "魚介に合う設計。シャープな後口。",
+    "serve": "冷酒〜常温",
+    "profile": {
+      "fruity": 0.5,
+      "acidity": 0.5,
+      "dryness": 0.7,
+      "aroma": 0.5,
+      "body": 0.6
+    }
+  },
+  {
+    "name": "〆張鶴 純",
+    "region": "新潟",
+    "notes": "すっきりと上品。淡麗ながら旨みあり。",
+    "serve": "冷酒〜常温",
+    "profile": {
+      "fruity": 0.4,
+      "acidity": 0.5,
+      "dryness": 0.6,
+      "aroma": 0.4,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "越乃寒梅 灑 純米吟醸",
+    "region": "新潟",
+    "notes": "名門の純米吟醸。凛としたキレと品格。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.5,
+      "acidity": 0.5,
+      "dryness": 0.6,
+      "aroma": 0.6,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "くどき上手 純米吟醸",
+    "region": "山形",
+    "notes": "香り高くジューシー。わかりやすい美味しさ。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.8,
+      "acidity": 0.5,
+      "dryness": 0.4,
+      "aroma": 0.9,
+      "body": 0.5
+    }
+  },
+  {
+    "name": "菊姫 山廃純米",
+    "region": "石川",
+    "notes": "濃醇な旨みと酸の骨格。燗で真価を発揮。",
+    "serve": "常温〜燗",
+    "profile": {
+      "fruity": 0.3,
+      "acidity": 0.6,
+      "dryness": 0.7,
+      "aroma": 0.4,
+      "body": 0.8
+    }
+  },
+  {
+    "name": "雁木 純米吟醸",
+    "region": "山口",
+    "notes": "ふくよかな旨みとエレガントな香り。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.7,
+      "acidity": 0.5,
+      "dryness": 0.5,
+      "aroma": 0.8,
+      "body": 0.6
+    }
+  },
+  {
+    "name": "松の司 純米大吟醸",
+    "region": "滋賀",
+    "notes": "穏やかな香りと奥行きのある旨みで食に寄り添う。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.7,
+      "acidity": 0.5,
+      "dryness": 0.5,
+      "aroma": 0.8,
+      "body": 0.6
+    }
+  },
+  {
+    "name": "手取川 純米吟醸",
+    "region": "石川",
+    "notes": "澄んだ香味とキレ。和食との相性が良い。",
+    "serve": "冷酒",
+    "profile": {
+      "fruity": 0.6,
+      "acidity": 0.5,
+      "dryness": 0.6,
+      "aroma": 0.7,
+      "body": 0.5
+    }
+  }
+]
